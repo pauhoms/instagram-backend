@@ -1,0 +1,7 @@
+services:
+  fake.user.repository:
+    class: ../../contexts/user/infrastructure/persistance/FakeUserRepository
+  
+  fake.user.create-user:
+    class: ../../contexts/user/application/create/UserCreator
+    arguments: ['@fake.user.repository']

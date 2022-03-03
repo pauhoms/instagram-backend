@@ -12,7 +12,7 @@ export abstract class MongoRepository<T extends AggregateRoot> {
   }
 
   protected async collection(): Promise<Collection> {
-    return (await this._client).db("blog").collection(this.moduleName());
+    return (await this._client).db("instagram").collection(this.moduleName());
   }
 
   protected async persist(id: string, aggregateRoot: T): Promise<void> {

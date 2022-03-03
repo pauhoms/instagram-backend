@@ -4,6 +4,18 @@ services:
       class: ../mongo/MongoFactory
       method: 'create'
 
-  controllers.shared.helth-check :
+  user.repository.mongo:
+    class: ../../contexts/user/infrastructure/persistance/mongo/MongoUserRepository.ts
+    arguments: ['@mongo.client']
+
+  user.service.create:
+    class: ../../contexts/user/application/create/UserCreator
+    arguments: ['@user.repository.mongo']
+
+  controllers.shared.helth-check:
     class: ../controllers/shared/HealthCheckController
     arguments: ['@mongo.client']
+
+  controllers.user.create-user:
+    class: ../controllers/user/UserCreatorController
+    arguments: ['@user.service.create']

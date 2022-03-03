@@ -14,7 +14,7 @@ afterAll((done) => {
   done();
 });
 
-describe("GET /api", () => {
+describe("GET health check", () => {
   it("should return 200 OK", async () => {
     const response = await request(app)
       .get(`/api/${version}/status`)
